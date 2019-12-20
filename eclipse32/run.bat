@@ -1,0 +1,29 @@
+java -cp bin;working_jars/animal-sniffer-annotations-1.14.jar;^
+working_jars/checker-compat-qual-2.5.2.jar;^
+working_jars/commons-codec-1.11.jar;^
+working_jars/commons-logging-1.2.jar;^
+working_jars/error_prone_annotations-2.1.3.jar;^
+working_jars/google-api-client-1.30.1.jar;^
+working_jars/google-api-services-oauth2-v2-rev20190313-1.30.1.jar;^
+working_jars/google-http-client-1.30.1.jar;^
+working_jars/google-http-client-jackson2-1.30.1.jar;^
+working_jars/google-oauth-client-1.30.1.jar;^
+working_jars/google-oauth-client-java6-1.30.4.jar;^
+working_jars/google-oauth-client-jetty-1.30.4.jar;^
+working_jars/grpc-context-1.19.0.jar;^
+working_jars/guava-26.0-android.jar;^
+working_jars/httpclient-4.5.8.jar;^
+working_jars/httpcore-4.4.11.jar;^
+working_jars/j2objc-annotations-1.1.jar;^
+working_jars/jackson-core-2.9.9.jar;^
+working_jars/jsr305-3.0.2.jar;^
+working_jars/opencensus-api-0.21.0.jar;^
+working_jars/opencensus-contrib-http-util-0.21.0.jar;^
+working_jars/jetty-continuation-8.2.0.v20160908.jar;^
+working_jars/jetty-http-8.2.0.v20160908.jar;^
+working_jars/jetty-io-8.2.0.v20160908.jar;^
+working_jars/jetty-server-8.2.0.v20160908.jar;^
+working_jars/jetty-util-8.2.0.v20160908.jar;^
+working_jars/javax.servlet-3.0.0.v201112011016.jar;^
+working_jars/google-oauth-client-jetty-1.30.4.jar;^
+resources;  com.google.api.services.samples.oauth2.cmdline.OAuth2Sample

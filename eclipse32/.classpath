@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="working_jars/animal-sniffer-annotations-1.14.jar"/>
+	<classpathentry kind="lib" path="working_jars/checker-compat-qual-2.5.2.jar"/>
+	<classpathentry kind="lib" path="working_jars/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="working_jars/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="working_jars/error_prone_annotations-2.1.3.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-api-client-1.30.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-api-services-oauth2-v2-rev20190313-1.30.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-http-client-1.30.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-http-client-jackson2-1.30.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-oauth-client-1.30.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-oauth-client-java6-1.30.4.jar"/>
+	<classpathentry kind="lib" path="working_jars/google-oauth-client-jetty-1.30.4.jar"/>
+	<classpathentry kind="lib" path="working_jars/grpc-context-1.19.0.jar"/>
+	<classpathentry kind="lib" path="working_jars/guava-26.0-android.jar"/>
+	<classpathentry kind="lib" path="working_jars/httpclient-4.5.8.jar"/>
+	<classpathentry kind="lib" path="working_jars/httpcore-4.4.11.jar"/>
+	<classpathentry kind="lib" path="working_jars/j2objc-annotations-1.1.jar"/>
+	<classpathentry kind="lib" path="working_jars/jackson-core-2.9.9.jar"/>
+	<classpathentry kind="lib" path="working_jars/jsr305-3.0.2.jar"/>
+	<classpathentry kind="lib" path="working_jars/opencensus-api-0.21.0.jar"/>
+	<classpathentry kind="lib" path="working_jars/opencensus-contrib-http-util-0.21.0.jar"/>
+	<classpathentry kind="lib" path="F:/rsync/RESEARCHS/very_low_bandwith_cctv_android/jars_zips_libs/jar_Download_google-oauth-client-jetty--jar_files/javax.servlet-3.0.0.v201112011016.jar"/>
+	<classpathentry kind="lib" path="working_jars/jetty-continuation-8.2.0.v20160908.jar"/>
+	<classpathentry kind="lib" path="working_jars/jetty-http-8.2.0.v20160908.jar"/>
+	<classpathentry kind="lib" path="working_jars/jetty-io-8.2.0.v20160908.jar"/>
+	<classpathentry kind="lib" path="working_jars/jetty-server-8.2.0.v20160908.jar"/>
+	<classpathentry kind="lib" path="working_jars/jetty-util-8.2.0.v20160908.jar"/>
+	<classpathentry kind="lib" path="resources"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
