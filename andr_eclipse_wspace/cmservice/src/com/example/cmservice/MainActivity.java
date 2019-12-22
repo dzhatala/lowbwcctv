@@ -14,10 +14,10 @@ import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -25,20 +25,19 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		start =(Button)findViewById(R.id.startButton);
+		start = (Button) findViewById(R.id.startButton);
 		start.setOnClickListener(new View.OnClickListener() {
-			//@Override
+			// @Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				startCSService();
+				// startCSService();
+				timerHandler.postDelayed(timerRunnable, 5000);
 			}
 		});
-		text1 = (TextView)findViewById(R.id.textView1);
+		text1 = (TextView) findViewById(R.id.textView1);
 
-		
-		//AUTOMATIC CaAPTURE
-        timerHandler.postDelayed(timerRunnable, 5000);
-
+		// AUTOMATIC CaAPTURE
+		// timerHandler.postDelayed(timerRunnable, 5000);
 
 	}
 
@@ -60,51 +59,51 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private void startCSService(){
-        PowerManager manager = (PowerManager) getSystemService(Context.POWER_SERVICE);
 
-        // Choice 2
-           PowerManager.WakeLock wl = manager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Your Tag");
-           wl.acquire();
-       //    wl.release();
+	private void startCSService() {
 		Intent front_translucent = new Intent(getApplication()
-                .getApplicationContext(), CameraService.class);
-        front_translucent.putExtra("Front_Request", true);
-        //front_translucent.putExtra("Quality_Mode",
-          //      camCapture.getQuality());
-       
-        
-        //zoel
-        front_translucent.putExtra("Quality_Mode",
-              10);
-        getApplication().getApplicationContext().startService(
-                front_translucent);
-		Toast.makeText(getApplicationContext(), 
-				"Camera Service started",Toast.LENGTH_LONG ).show();
+				.getApplicationContext(), CameraService.class);
+		// front_translucent.putExtra("Front_Request", true);
+		front_translucent.putExtra("Front_Request", isFront);
+		// front_translucent.putExtra("Quality_Mode",
+		// camCapture.getQuality());
+
+		// zoel
+		front_translucent.putExtra("Quality_Mode", 10);
+		getApplication().getApplicationContext()
+				.startService(front_translucent);
+		Toast.makeText(getApplicationContext(), "Camera Service started",
+				Toast.LENGTH_LONG).show();
 	}
 
-	
+	private long counter = 0;
+	Handler timerHandler = new Handler();
+	Runnable timerRunnable = new Runnable() {
+		@Override
+		public void run() {
+			// other stuff
+			counter++;
+			CheckBox cf = (CheckBox) findViewById(R.id.checkFront);
+			isFront = cf.isChecked();
+			EditText em = (EditText) findViewById(R.id.editMinutes);
+			try {
+				minutes = Integer.parseInt(em.getText().toString());
+			} catch (NumberFormatException nfe) {
+				minutes = MINUTE_DEFAULT;
+			}
+			text1.setText("c#:" + counter + " m#:" + minutes + " fr#:"
+					+ isFront);
+			startCSService();
+			// reschedule
+			timerHandler.postDelayed(this, 60 * 1000 * minutes);
 
-    private long counter =0;
-    Handler timerHandler = new Handler();
-    Runnable timerRunnable = new Runnable() {
-        @Override
-        public void run() {
-            // other stuff
-            counter++;
-            text1.setText("counter: "+counter);
-            startCSService();
-            //reschedule
-            timerHandler.postDelayed(this, 60000); 
-        
-        }
-    };
+		}
+	};
 
-	TextView text1 ;
+	int minutes = 2;
+	final int MINUTE_DEFAULT = 2;
+	TextView text1;
 	Button start;
-
+	boolean isFront = false;
 
 }
-
-

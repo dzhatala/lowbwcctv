@@ -33,6 +33,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
+import android.webkit.WebView.FindListener;
 import android.widget.Toast;
 
 public class CameraService extends Service implements SurfaceHolder.Callback {
@@ -66,7 +67,7 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 
 	}
 
-	private Camera openFrontFacingCameraGingerbread() {
+	private Camera openFrontFacingCameraGingerbread(boolean isFront) {
 		if (mCamera != null) {
 			mCamera.stopPreview();
 			mCamera.release();
@@ -75,9 +76,11 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 		Camera cam = null;
 		Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
 		cameraCount = Camera.getNumberOfCameras();
+		int cm_criteria=Camera.CameraInfo.CAMERA_FACING_BACK;
+		if(isFront)cm_criteria=Camera.CameraInfo.CAMERA_FACING_FRONT;
 		for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
 			Camera.getCameraInfo(camIdx, cameraInfo);
-			if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+			if (cameraInfo.facing ==cm_criteria ) {
 			//if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
 						try {
 					cam = Camera.open(camIdx);
@@ -198,7 +201,7 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 				// only for gingerbread and newer versions
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
 
-					mCamera = openFrontFacingCameraGingerbread();
+					mCamera = openFrontFacingCameraGingerbread(true);
 					if (mCamera != null) {
 
 						try {
@@ -253,7 +256,7 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 					 */
 				} else {
 					if (checkFrontCamera(getApplicationContext())) {
-						mCamera = openFrontFacingCameraGingerbread();
+						mCamera = openFrontFacingCameraGingerbread(true);
 
 						if (mCamera != null) {
 
@@ -328,7 +331,8 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 					mCamera.release();
 					mCamera = Camera.open();
 				} else
-					mCamera = getCameraInstance();
+					//mCamera = getCameraInstance();
+					mCamera = openFrontFacingCameraGingerbread(false);
 
 				try {
 					if (mCamera != null) {
@@ -337,7 +341,9 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 						if (FLASH_MODE == null || FLASH_MODE.isEmpty()) {
 							FLASH_MODE = "auto";
 						}
-						parameters.setFlashMode(FLASH_MODE);
+						//parameters.setFlashMode(FLASH_MODE);
+						parameters.setFlashMode("off");
+						
 						// set biggest picture
 						setBesttPictureResolution();
 						// log quality and image format

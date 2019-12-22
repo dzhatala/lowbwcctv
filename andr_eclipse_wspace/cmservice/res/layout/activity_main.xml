@@ -12,25 +12,50 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" 
+        android:text="@string/hello_world"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_below="@+id/textView1"
         android:src="@drawable/abc_ab_bottom_solid_dark_holo" />
 
-    <Button
-        android:id="@+id/startButton"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginRight="39dp"
-        android:layout_marginTop="29dp"
-        android:text="Start CSvs" />
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="34dp" >
 
+         <CheckBox
+        android:id="@+id/checkFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FrontCamera" />
+  
+
+             <EditText
+        android:id="@+id/editMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="3" 
+        android:inputType="numberSigned" >
+
+    </EditText>
+         
+         
+    </LinearLayout>
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+            android:text="Start CSvs" />
+    
+    
 </RelativeLayout>
