@@ -58,7 +58,8 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 	SharedPreferences pref;
 	Editor editor;
 	int width = 0, height = 0;
-
+	final static String DEST_FOLDER="togdrive";
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate() {
@@ -460,7 +461,7 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 				bmp.compress(Bitmap.CompressFormat.JPEG, QUALITY_MODE, bytes);
 
 			File imagesFolder = new File(
-					Environment.getExternalStorageDirectory(), "togdrive");
+					Environment.getExternalStorageDirectory(), DEST_FOLDER);
 			if (!imagesFolder.exists())
 				imagesFolder.mkdirs(); // <----
 			File image = new File(imagesFolder, System.currentTimeMillis()
