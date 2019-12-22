@@ -3,9 +3,11 @@ package com.example.cmservice;
 import java.io.IOException;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
 		//AUTOMATIC CaAPTURE
         timerHandler.postDelayed(timerRunnable, 5000);
 
-	
+
 	}
 
 	@Override
@@ -60,13 +62,22 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	private void startCSService(){
+        PowerManager manager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+
+        // Choice 2
+           PowerManager.WakeLock wl = manager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Your Tag");
+           wl.acquire();
+       //    wl.release();
 		Intent front_translucent = new Intent(getApplication()
                 .getApplicationContext(), CameraService.class);
         front_translucent.putExtra("Front_Request", true);
         //front_translucent.putExtra("Quality_Mode",
           //      camCapture.getQuality());
-       front_translucent.putExtra("Quality_Mode",
-              100);
+       
+        
+        //zoel
+        front_translucent.putExtra("Quality_Mode",
+              10);
         getApplication().getApplicationContext().startService(
                 front_translucent);
 		Toast.makeText(getApplicationContext(), 

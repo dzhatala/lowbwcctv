@@ -78,7 +78,8 @@ public class CameraService extends Service implements SurfaceHolder.Callback {
 		for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
 			Camera.getCameraInfo(camIdx, cameraInfo);
 			if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-				try {
+			//if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+						try {
 					cam = Camera.open(camIdx);
 				} catch (RuntimeException e) {
 					Log.e("Camera",
